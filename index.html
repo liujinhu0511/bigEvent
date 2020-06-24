@@ -1,14 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>后台主页</title>
+    <!-- 导入 layui 的样式表 -->
+    <link rel="stylesheet" href="/assets/lib/layui/css/layui.css" />
+    <link rel="stylesheet" href="/assets/fonts/iconfont.css" />
+    <link rel="stylesheet" href="/assets/css/index.css" />
+    <script src="/assets/lib/jquery.js"></script>
+    <script src="/assets/js/commen.js"></script>
+    <script src="/assets/js/index.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+  <body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+      <div class="layui-header">
+        <div class="layui-logo">
+          <img src="/assets/images/logo.png" alt="" />
+        </div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-right">
+          <li class="layui-nav-item">
+            <a href="javascript:;">
+              <span class="img-text">L</span>
+              <img src="/assets/images/1.jpg" class="layui-nav-img" />
+              个人中心
+            </a>
+            <dl class="layui-nav-child">
+              <dd><a href="/user/userinfo.html" target="fm">基本资料</a></dd>
+              <dd><a href="/user/setavatar.html" target="fm">更换头像</a></dd>
+              <dd><a href="/user/resetpwd.html" target="fm">密码重置</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item">
+            <a in="btn-exit" href="javascript:;"><span class="iconfont icon-tuichu icon-margin"></span>退出</a>
+          </li>
+        </ul>
+      </div>
 
-<body>
-  aaa
-</body>
+      <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+          <div class="userinfo">
+            <img id="img-avatar" src="/assets/images/1.jpg" class="layui-nav-img" />
+            <span class="img-text">L</span>
+            <span id="weclome">欢迎 L</span>
+          </div>
+          <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+          <ul class="layui-nav layui-nav-tree" lay-filter="test" lay-shrink="all">
+            <li class="layui-nav-item layui-this">
+              <a href=""> <i class="layui-icon layui-icon-home icon-margin"></i> 首页</a>
+            </li>
+            <li class="layui-nav-item">
+              <a class="" href="javascript:;"><i class="layui-icon layui-icon-list icon-margin"></i>文章管理</a>
+              <dl class="layui-nav-child">
+                <dd><a href="javascript:;">文章分类</a></dd>
+                <dd><a href="javascript:;">文章列表</a></dd>
+                <dd><a href="javascript:;">发表文章</a></dd>
+              </dl>
+            </li>
+            <li class="layui-nav-item">
+              <a href="javascript:;"><i class="layui-icon layui-icon-username icon-margin"></i>个人中心</a>
+              <dl class="layui-nav-child">
+                <dd><a href="javascript:;">用户信息</a></dd>
+                <dd><a href="javascript:;">更换头像</a></dd>
+                <dd><a href="javascript:;">修改密码</a></dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+      </div>
 
+      <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <iframe src="/home/dashboard.html" frameborder="0"></iframe>
+      </div>
+
+      <div class="layui-footer" style="text-align: center;">
+        <!-- 底部固定区域 -->
+        © layui.com - 底部固定区域
+      </div>
+    </div>
+    <!-- 导入 layui 的JS文件 -->
+    <script src="/assets/lib/layui/layui.all.js"></script>
+  </body>
 </html>

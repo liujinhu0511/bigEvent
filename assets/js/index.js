@@ -2,7 +2,8 @@ $(function () {
   // 加载用户基本信息
   getUserInfo();
   // 退出功能
-  $("#btn-exit").click(function () {
+  $("#btn-exit").on("click", function () {
+    console.log(11);
     // 关闭当前页面
     // 删除token
     layer.confirm("你确定要退出吗？", { icon: 3, title: "提示" }, function (index) {

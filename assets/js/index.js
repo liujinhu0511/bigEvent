@@ -23,7 +23,6 @@ function getUserInfo() {
         if (res.data.user_pic) {
           $(".layui-nav-img").attr("src", res.data.user_pic).show()
           $(".img-text").hide()
-          console.log(11)
         } else {
           $(".img-text").css("display", "inline-block").html(name.substr(0, 1).toUpperCase())
           $(".layui-nav-img").hide()

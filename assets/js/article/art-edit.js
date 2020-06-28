@@ -21,6 +21,10 @@ $(function () {
     aspectRatio: 400 / 280,
     preview: ".img-preview",
   }
+
+  // 3. 初始化裁剪区域
+  $image.cropper(options)
+
   var state = "已发布"
   $("#btn-draft").click(function () {
     state = "草稿"

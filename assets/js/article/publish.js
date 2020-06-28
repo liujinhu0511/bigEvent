@@ -5,6 +5,7 @@ $(function () {
 
   // 初始化富文本
   initEditor()
+
   // 1. 初始化图片裁剪器
   var $image = $("#image")
 

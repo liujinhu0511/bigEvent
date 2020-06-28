@@ -34,7 +34,7 @@ $(function () {
       url: "/my/article/list",
       data: q,
       success: function (res) {
-        layer.msg(res.message)
+        // layer.msg(res.message)
         if (res.status === 0) {
           // 调用模板引擎渲染分类的可选项
           var htmlStr = template("tpl-artList", res)
@@ -53,7 +53,7 @@ $(function () {
     $.ajax({
       url: "/my/article/cates",
       success: function (res) {
-        layer.msg(res.message)
+        // layer.msg(res.message)
         if (res.status === 0) {
           // 调用模板引擎渲染分类的可选项
           var htmlStr = template("tpl-cateList", res)

@@ -35,8 +35,9 @@ $(function () {
   })
 
   // 选择封面点击事件
-  $("btn-chooseImg").click(function () {
-    $("#file").clcik()
+  $("#btn-chooseImg").click(function () {
+    console.log(111)
+    $("#file").click()
   })
 
   //当文件域发生改变时
@@ -45,7 +46,7 @@ $(function () {
     var newURL = URL.createObjectURL(files)
     $image
       .cropper("destroy") // 销毁旧的裁剪区域
-      .attr("src", newImgURL) // 重新设置图片路径
+      .attr("src", newURL) // 重新设置图片路径
       .cropper(options) // 重新初始化裁剪区域
   })
 
@@ -53,7 +54,8 @@ $(function () {
   $("#form-pub").submit(function (e) {
     e.preventDefault()
 
-    var data = new FormData($(this).serizlize())
+    var data = new FormData(this)
+    data.append("state", state)
 
     $image
       .cropper("getCroppedCanvas", {
@@ -65,11 +67,17 @@ $(function () {
         // 将 Canvas 画布上的内容，转化为文件对象
         // 得到文件对象后，进行后续的操作
         // 获取表单提交的数据
-        var data = $("f")
+        data.append("cover_img", blob)
         $.ajax({
           type: "POST",
           url: "/my/article/add",
           data: data,
+          success: function (res) {
+            layer.msg(res.message)
+            location.href = "/article/art_list.html"
+          },
+          contentType: false,
+          processData: false,
         })
       })
   })

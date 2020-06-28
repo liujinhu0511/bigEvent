@@ -12,7 +12,8 @@ $(function () {
     })
   })
 })
-
+var art_id = ""
+console.log(art_id)
 // 加载用户基本信息
 function getUserInfo() {
   $.ajax({

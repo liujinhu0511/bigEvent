@@ -111,4 +111,11 @@ $(function () {
       layer.close(index)
     })
   })
+
+  //修改文章
+  $("tbody").on("click", "#btn-edit", function () {
+    location.href = "/article/art_edit.html"
+    window.parent.art_id = this.dataset.id
+    // console.log(window.parent.art_id)
+  })
 })

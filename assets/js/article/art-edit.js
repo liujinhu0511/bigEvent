@@ -1,10 +1,18 @@
 $(function () {
+  // 加载表单模块
   var form = layui.form
-  // 重新渲染表单数据
-  form.render()
-
-  // 初始化富文本
-  initEditor()
+  // 初始化加载文章列表的信息
+  initArtInfo()
+  function initArtInfo() {
+    $.ajax({
+      url: "/my/article/" + window.parent.art_id,
+      success: function (res) {
+        if (res.status === 0) {
+          form.val("form-edit", res.data)
+        }
+      },
+    })
+  }
   // 1. 初始化图片裁剪器
   var $image = $("#image")
 
@@ -13,49 +21,17 @@ $(function () {
     aspectRatio: 400 / 280,
     preview: ".img-preview",
   }
-
-  // 3. 初始化裁剪区域
-  $image.cropper(options)
-
-  // 加载下拉框文章分类数据
-  initCategory()
-  function initCategory() {
-    $.ajax({
-      url: "/my/article/cates",
-      success: function (res) {
-        $("#category").html(template("tpl-cate", res))
-        form.render()
-      },
-    })
-  }
-  // 设置发表状态
   var state = "已发布"
   $("#btn-draft").click(function () {
     state = "草稿"
   })
-
-  // 选择封面点击事件
-  $("#btn-chooseImg").click(function () {
-    $("#file").click()
-  })
-
-  //当文件域发生改变时
-  $("#file").change(function () {
-    var files = this.files[0]
-    var newURL = URL.createObjectURL(files)
-    $image
-      .cropper("destroy") // 销毁旧的裁剪区域
-      .attr("src", newURL) // 重新设置图片路径
-      .cropper(options) // 重新初始化裁剪区域
-  })
-
-  // 监听表单提交事件
-  $("#form-pub").submit(function (e) {
+  // 根据Id更新文章信息
+  $("#form-edit").submit(function (e) {
     e.preventDefault()
 
     var data = new FormData(this)
     data.append("state", state)
-
+    data.append("Id", window.parent.art_id)
     $image
       .cropper("getCroppedCanvas", {
         // 创建一个 Canvas 画布
@@ -69,7 +45,7 @@ $(function () {
         data.append("cover_img", blob)
         $.ajax({
           type: "POST",
-          url: "/my/article/add",
+          url: "/my/article/edit",
           data: data,
           success: function (res) {
             layer.msg(res.message)

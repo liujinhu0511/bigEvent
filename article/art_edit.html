@@ -16,7 +16,6 @@
     <script src="/assets/lib/cropper/jquery-cropper.js"></script>
     <script src="/assets/lib/template-web.js"></script>
     <script src="/assets/js/commen.js"></script>
-    <script src="/assets/js/article/publish.js"></script>
     <script src="/assets/js/article/art-edit.js"></script>
   </head>
   <body>
@@ -72,7 +71,7 @@
           <!-- 第五行 -->
           <div class="layui-form-item">
             <div class="layui-input-block">
-              <button id="btn-pub" class="layui-btn" lay-submit>发布</button>
+              <button id="btn-pub" class="layui-btn" lay-submit>确认修改</button>
               <button id="btn-draft" class="layui-btn layui-btn-primary" lay-submit>存为草稿</button>
             </div>
           </div>
@@ -83,7 +82,7 @@
     <script type="text/html" id="tpl-cate">
       <option value="">请选择文章类别</option>
       {{each data}}
-      <option value="{{$value.Id}}">{{$value.name}}</option>
+      <option value="{{$value.Id}}" {{if $value.Id === currentCateId }}selected="selected"{{/if}}>{{$value.name}}</option>
       {{/each}}
     </script>
   </body>

@@ -70,6 +70,7 @@ $(function () {
     e.preventDefault()
     q.cate_id = $('select[name="cate_id"]').val()
     q.state = $('select[name="state"]').val()
+    q.pagenum = 1
     initArtList()
   })
 

@@ -12,8 +12,6 @@ $(function () {
     })
   })
 })
-var art_id = ""
-console.log(art_id)
 // 加载用户基本信息
 function getUserInfo() {
   $.ajax({
@@ -21,6 +19,9 @@ function getUserInfo() {
     success: function (res) {
       if (res.status === 0) {
         var name = res.data.nickname || res.data.username
+
+        $("#weclome").html("欢迎&nbsp;&nbsp;" + name)
+
         if (res.data.user_pic) {
           $(".layui-nav-img").attr("src", res.data.user_pic).show()
           $(".img-text").hide()
@@ -28,7 +29,6 @@ function getUserInfo() {
           $(".img-text").css("display", "inline-block").html(name.substr(0, 1).toUpperCase())
           $(".layui-nav-img").hide()
         }
-        $("#weclome").html("欢迎&nbsp;&nbsp;" + name)
       }
     },
   })

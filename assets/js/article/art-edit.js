@@ -29,7 +29,7 @@ $(function () {
           // 3. 初始化裁剪区域 把当前封面地址进行替换
           $image
             .cropper("destroy") // 销毁旧的裁剪区域
-            .attr("src", "http://www.liulongbin.top:3007" + res.data.cover_img) // 重新设置图片路径
+            .attr("src", "http://localhost:3007" + res.data.cover_img) // 重新设置图片路径
             .cropper(options) // 重新初始化裁剪区域
         }
       },
@@ -44,6 +44,8 @@ $(function () {
         if (res.status !== 0) {
           return layer.msg("初始化文章分类失败！")
         }
+        // console.log(res.data.cate_id === currentCateId)
+        // 添加一个新属性
         res.currentCateId = currentCateId
         // 调用模板引擎，渲染分类的下拉菜单
         var htmlStr = template("tpl-cate", res)

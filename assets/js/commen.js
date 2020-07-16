@@ -1,7 +1,7 @@
 $(function () {
   $.ajaxPrefilter(function (options) {
     // 配置统一url
-    options.url = "http://www.liulongbin.top:3007" + options.url
+    options.url = "http://localhost:3007" + options.url
     // 配置统一headers
     if (options.url.indexOf("/my/") !== -1) {
       options.headers = {
